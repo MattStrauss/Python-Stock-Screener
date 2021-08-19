@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
-    <div class="content">
+    <div class="content border border-rounded">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
 
@@ -57,16 +57,16 @@
 
 <script>
 function sectorSelection(){
-    var e = document.getElementById('sector_select');
-    var sector = e.options[e.selectedIndex].text
+    const e = document.getElementById('sector_select');
+    const sector = e.options[e.selectedIndex].text;
 
     fetch('/' + sector, {method: 'GET'})
     .then(response => response.json())
     .then(json => {
-        var e = document.getElementById('industry_select');
+        const e = document.getElementById('industry_select');
         e.innerHTML = '';
 
-        for(var i in json){
+        for(const i in json){
             let option = document.createElement('option');
             option.innerHTML = json[i];
             e.appendChild(option);
